@@ -264,3 +264,36 @@ html, body { margin: 0; background: #f1f6f3; }
   .title-btn, .dots span, .orb.listening, .orb.speaking, .book { animation: none; }
   .book, .card, .title-btn { transition: none; }
 }
+/* ===== FIT FIXES (keep this block last in the file) ===== */
+.banner { padding-top: max(14px, env(safe-area-inset-top)); }
+.app.chatting .banner { padding-top: max(12px, env(safe-area-inset-top)); }
+
+/* shelf: one-line titles, fixed book sizes, no overlap */
+.shelf { overflow: hidden; }
+.books { gap: 7px; overflow-y: auto; scrollbar-width: none; padding: 2px 12px 2px 0; }
+.books::-webkit-scrollbar { display: none; }
+.book { flex: 1 1 0; min-height: 2.1em; max-height: 4.4em; }
+.spine { padding: 0 2.1em; min-width: 0; overflow: hidden; }
+.btitle { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; font-size: clamp(11px, 0.85vw + 2px, 15px); letter-spacing: 0.03em; line-height: 1; }
+.pages { width: 1.3em; }
+
+/* icons and buttons: right size and aligned */
+.field button svg { width: 1.25em; height: 1.25em; }
+.send { width: 3.2em; }
+.num { width: 1.8em; height: 1.8em; font-size: 0.82em; }
+
+/* laptops and short windows: compact courts so the shelf gets room */
+@media (min-width: 1100px) and (max-height: 940px) {
+  .stext span, .tag-en { display: none; }
+  .step { padding: 0.1em 0.2em; margin-bottom: 0.1em; }
+  .courts { padding: 0.6em 0.9em; }
+  .title-btn { font-size: clamp(36px, min(5.6vw, 8vh), 72px); }
+  .fact { padding: 0.4em 0.85em; font-size: 0.85em; }
+  .banner { padding-bottom: 6px; }
+  .tag-motto { margin-top: 6px; }
+}
+
+/* tablet and phone: books show in full */
+@media (max-width: 1099px) {
+  .app:not(.chatting) .book { flex: none; min-height: 3.4em; max-height: none; }
+}
