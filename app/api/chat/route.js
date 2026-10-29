@@ -40,7 +40,7 @@ async function callGroq(model, history, extra, stream) {
       signal: controller.signal,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        Authorization: `Bearer ${(process.env.GROQ_API_KEY || "").trim().replace(/^["']|["']$/g, "")}`,
       },
       body: JSON.stringify({
         model,
